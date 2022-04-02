@@ -19,7 +19,15 @@ contract AssetDemo is AbstractAsset {
         did = _did;
         owner = _owner;
         name = _name;
-        emit AssetCreationEvent(_name, _imgUrl, _did, _owner, price, stage);
+        emit AssetCreationEvent(
+            _name,
+            _imgUrl,
+            _did,
+            _owner,
+            price,
+            address(this),
+            stage
+        );
     }
 
     function buy() public payable {
@@ -42,6 +50,7 @@ contract AssetDemo is AbstractAsset {
             url,
             path
         );
+        emit BuyActionEvent(buyer, address(this), did);
     }
 
     function buyOracleReqCallback(bytes32 _requestId, uint256 _valid) public {

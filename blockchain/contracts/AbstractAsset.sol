@@ -24,10 +24,12 @@ contract AbstractAsset is ChainlinkClient {
         string did,
         address owner,
         uint256 price,
+        address addr,
         Stage stage
     );
     event OwnerTransformEvent(address _contract, address _from, address _to);
     event AssetCheckFailed(address _contract, address _buyer);
+    event BuyActionEvent(address buyer, address addr, string did);
     /**
      *资产信息
      */
