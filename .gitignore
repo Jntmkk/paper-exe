@@ -1,0 +1,12 @@
+.vscode
+chainlink/
+blockchain/build
+blockchain/node_modules
+db-data
+ipfs
+subgraph/
+subgraph-host/node_modules
+subgraph-host/abis
+subgraph-host/build
+subgraph-host/generated
+
