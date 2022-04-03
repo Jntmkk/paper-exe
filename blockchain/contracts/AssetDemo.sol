@@ -10,7 +10,8 @@ contract AssetDemo is AbstractAsset {
         string memory _did,
         address _owner,
         string memory _imgUrl,
-        string memory _name
+        string memory _name,
+        string memory _ipfs
     ) public {
         initLink(_link);
         price = 0;
@@ -19,6 +20,7 @@ contract AssetDemo is AbstractAsset {
         did = _did;
         owner = _owner;
         name = _name;
+        ipfs = _ipfs;
         emit AssetCreationEvent(
             _name,
             _imgUrl,
@@ -26,6 +28,7 @@ contract AssetDemo is AbstractAsset {
             _owner,
             price,
             address(this),
+            ipfs,
             stage
         );
     }

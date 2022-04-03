@@ -1,5 +1,10 @@
 server:
   port: 9999
-
 ipfs:
   url: /ip4/127.0.0.1/tcp/5001
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates
+    encoding: utf-8
+

@@ -48,7 +48,8 @@ contract Registry is ChainlinkClient {
             _did,
             _owner,
             _imgUrl,
-            _name
+            _name,
+            _hash
         );
         id2isuuer[_did] = _hash;
         id2contract[_did] = address(asset);

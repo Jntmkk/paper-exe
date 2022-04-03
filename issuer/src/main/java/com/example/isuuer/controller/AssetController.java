@@ -23,7 +23,7 @@ public class AssetController {
 
     @GetMapping("/valid")
     public DemoBean getPrice() {
-        return new DemoBean(123, 200);
+        return new DemoBean(123, 123);
     }
 
 //    @GetMapping("/")

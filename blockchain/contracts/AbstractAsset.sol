@@ -25,6 +25,7 @@ contract AbstractAsset is ChainlinkClient {
         address owner,
         uint256 price,
         address addr,
+        string ipfs,
         Stage stage
     );
     event OwnerTransformEvent(address _contract, address _from, address _to);
@@ -55,7 +56,7 @@ contract AbstractAsset is ChainlinkClient {
     string serviceUrl;
     // 请求获取数据的路径
     string path;
-
+    string ipfs;
     address buyer;
 
     function initLink(address _link) public {
