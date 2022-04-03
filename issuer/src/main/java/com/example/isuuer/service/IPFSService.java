@@ -8,7 +8,9 @@ import java.io.IOException;
 public interface IPFSService {
     byte[] catFile(String hash) throws IOException;
 
-    MerkleNode addFile(File file) throws IOException;
+    String addFile(File file) throws IOException;
+
+    String addString(String data) throws IOException;
 
     MerkleNode addBytes(byte[] bytes) throws IOException;
 }

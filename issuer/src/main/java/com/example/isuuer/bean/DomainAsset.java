@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DomainAsset {
+
     private String did;
     private String name;
     private String url;

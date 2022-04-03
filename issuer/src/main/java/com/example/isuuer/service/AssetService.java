@@ -52,6 +52,7 @@ public interface AssetService {
 
     /**
      * @param asset
+     * @return
      */
-    void linkAsset(DomainAsset asset);
+    String linkAsset(DomainAsset asset) throws Exception;
 }

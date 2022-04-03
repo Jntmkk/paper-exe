@@ -13,11 +13,11 @@ public class IPFSConfig {
     @Value("${ipfs.url}")
     String url;
 
-//    @Bean
-//    public IPFS ipfs() throws IOException {
-//        IPFS ipfs = new IPFS(url);
-//        ipfs.refs.local();
-//        return ipfs;
-//    }
+    @Bean
+    public IPFS ipfs() throws IOException {
+        IPFS ipfs = new IPFS(url);
+        ipfs.refs.local();
+        return ipfs;
+    }
 
 }

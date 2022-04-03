@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AssetProof {
     private String creator = "did:dns";
-    private String type = "SHA1withECDSA";
+    private String type = "SHA1withRSA";
     private String signature;
 
     public AssetProof(String signature) {

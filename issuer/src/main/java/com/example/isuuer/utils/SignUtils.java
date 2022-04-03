@@ -1,16 +1,14 @@
 package com.example.isuuer.utils;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.*;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.*;
-import java.security.spec.ECGenParameterSpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Arrays;
 
 /**
  * @author ywb
@@ -36,30 +34,18 @@ public class SignUtils {
 
     public static KeyPair loadKeyPair(String path) throws Exception {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        URI pub = classLoader.getResource("key/key.pub").toURI();
-        // Read Public Key.
-        File filePublicKey = new File(pub);
-        FileInputStream fis = new FileInputStream(filePublicKey);
-        byte[] encodedPublicKey = new byte[(int) filePublicKey.length()];
-        fis.read(encodedPublicKey);
-        fis.close();
 
-        URI pri = classLoader.getResource("key/key").toURI();
-        // Read Private Key.
-        File filePrivateKey = new File(pri);
-        fis = new FileInputStream(filePrivateKey);
-        byte[] encodedPrivateKey = new byte[(int) filePrivateKey.length()];
-        fis.read(encodedPrivateKey);
-        fis.close();
+        byte[] pub = IOUtils.toByteArray(classLoader.getResourceAsStream("key/key.pub"));
+        byte[] pri = IOUtils.toByteArray(classLoader.getResourceAsStream("key/key"));
 
         // Generate KeyPair.
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(
-                encodedPublicKey);
+                pub);
         PublicKey publicKey = keyFactory.generatePublic(publicKeySpec);
 
         PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(
-                encodedPrivateKey);
+                pri);
         PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
 
         return new KeyPair(publicKey, privateKey);

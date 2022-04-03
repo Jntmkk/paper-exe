@@ -13,8 +13,9 @@ import org.thymeleaf.util.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
-//@Service
+@Service
 @Data
 public class IPFSServiceImpl implements IPFSService {
     @Autowired
@@ -30,10 +31,17 @@ public class IPFSServiceImpl implements IPFSService {
     }
 
     @Override
-    public MerkleNode addFile(File file) throws IOException {
+    public String addFile(File file) throws IOException {
         NamedStreamable.FileWrapper wp = new NamedStreamable.FileWrapper(file);
         MerkleNode addResult = ipfs.add(wp).get(0);
-        return addResult;
+        return addResult.hash.toString();
+    }
+
+    @Override
+    public String addString(String data) throws IOException {
+        NamedStreamable.ByteArrayWrapper byteArrayWrapper = new NamedStreamable.ByteArrayWrapper(data.getBytes(StandardCharsets.UTF_8));
+        MerkleNode merkleNode = ipfs.add(byteArrayWrapper).get(0);
+        return merkleNode.hash.toString();
     }
 
     @Override

@@ -1,47 +1,49 @@
 version: "3"
 
 services:
-  postgres:
-    # container_name: pg
-    image: postgres:13.1-alpine
-    ports:
-      - 5432:5432
-    env_file:
-      - ./chainlink/postgres.env
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
-    networks:
-      - chainlink-net
+  # postgres:
+  #   # container_name: pg
+  #   image: postgres:13.1-alpine
+  #   ports:
+  #     - 5432:5432
+  #   env_file:
+  #     - ./chainlink/postgres.env
+  #   volumes:
+  #     - ./db-data:/var/lib/postgresql/data
+  #   networks:
+  #     - chainlink-net
 
-  chainlink:
-    container_name: chainlink
-    build: ./chainlink
-    env_file:
-      - ./chainlink/chainlink.env
-    # command: /bin/sh -c './wait-for.sh postgres:5432 -- local node -p /chainlink/.password -a /chainlink/.api'
-    # command: local node -p /home/chainlink/chainlink-data/.password -a
-    #   /home/chainlink/chainlink-data/.api    
-    command: -c  './wait-for.sh postgres:5432 -- chainlink local node -p
-      /home/chainlink/chainlink-data/.password -a
-      /home/chainlink/chainlink-data/.api'
-    # restart: on-failure
-    ports:
-      - 6688:6688
-    links:
-      - postgres
-    depends_on:
-      - postgres
-    volumes:
-      - ./chainlink/data:/home/chainlink/chainlink-data
-    networks:
-      - chainlink-net
-    # volumes:
-    #   db-data: null
-    #   chainlink_data: null
-    # db-data: ./db-data
-    # chainlink_data: ./chainlink
+  # chainlink:
+  #   container_name: chainlink
+  #   build: ./chainlink
+  #   env_file:
+  #     - ./chainlink/chainlink.env
+  #   # command: /bin/sh -c './wait-for.sh postgres:5432 -- local node -p /chainlink/.password -a /chainlink/.api'
+  #   # command: local node -p /home/chainlink/chainlink-data/.password -a
+  #   #   /home/chainlink/chainlink-data/.api    
+  #   command: -c  './wait-for.sh postgres:5432 -- chainlink local node -p
+  #     /home/chainlink/chainlink-data/.password -a
+  #     /home/chainlink/chainlink-data/.api'
+  #   # restart: on-failure
+  #   ports:
+  #     - 6688:6688
+  #   links:
+  #     - postgres
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./chainlink/data:/home/chainlink/chainlink-data
+  #   networks:
+  #     - chainlink-net
+  #   # volumes:
+  #   #   db-data: null
+  #   #   chainlink_data: null
+  #   # db-data: ./db-data
+  #   # chainlink_data: ./chainlink
   ipfs:
-    image: yrzr/go-ipfs-arm64v8:latest
+    # image: yrzr/go-ipfs-arm64v8:latest
+    # image: yeasy/ipfs
+    image: ipfs/go-ipfs:latest
     volumes:
       - ./ipfs/data:/data/ipfs
       - ./ipfs/export:/export
@@ -50,12 +52,18 @@ services:
       - 8080:8080
       - 5001:5001
     networks:
-      - chainlink-net
+      proxy:
+        ipv4_address: 172.16.0.2
   issuer:
     build: ./issuer
     ports:
       - 9999:9999
     networks:
-      - chainlink-net
+      proxy:
+        ipv4_address: 172.16.0.3
+
 networks:
-  chainlink-net: null
+  proxy:
+    ipam:
+      config:
+        - subnet: 172.16.0.0/24
