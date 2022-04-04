@@ -4,7 +4,8 @@ chainlink/
 blockchain/node_modules
 db-data
 ipfs
-subgraph/
+subgraph/node_modules
+subgraph/generated
 subgraph-host/node_modules
 subgraph-host/abis
 subgraph-host/build

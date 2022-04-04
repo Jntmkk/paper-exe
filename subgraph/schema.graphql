@@ -1,0 +1,16 @@
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  _contract: Bytes! # address
+  _buyer: Bytes! # address
+}
+type AssetEntity @entity {
+  id: ID!# contract address
+  name: String
+  url: String
+  did: String!
+  owner: String!
+  price: BigInt
+  addr: String
+  ipfs: String
+}

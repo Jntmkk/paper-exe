@@ -1,0 +1,40 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AssetDemo
+    network: kovan
+    source:
+      abi: AssetDemo
+      startBlock: 30809518
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AssetCheckFailed
+        - AssetCreationEvent
+        - ChainlinkCancelled
+        - ChainlinkFulfilled
+        - ChainlinkRequested
+        - OwnerTransformEvent
+      abis:
+        - name: AssetDemo
+          file: blockchain/build/contracts/AssetDemo.json
+      eventHandlers:
+        - event: AssetCheckFailed(address,address)
+          handler: handleAssetCheckFailed
+        - event: AssetCreationEvent(string,string,string,address,uint256,address,string,uint8)
+          topic0: "0x1040027de153a397259bacfc73d07396579696ff3fa3d51aebc2eca11bf04ec0"
+          handler: handleAssetCreationEvent
+        - event: ChainlinkCancelled(indexed bytes32)
+          handler: handleChainlinkCancelled
+        - event: ChainlinkFulfilled(indexed bytes32)
+          handler: handleChainlinkFulfilled
+        - event: ChainlinkRequested(indexed bytes32)
+          handler: handleChainlinkRequested
+        - event: OwnerTransformEvent(address,address,address)
+          topic0: "0x626629a6220914361a0855b5f4c81c38c4ce7b39d504313e19a07c1b1ddc033c"
+          handler: handleOwnerTransformEvent
+      file: AssetDemo/AssetDemo.wasm

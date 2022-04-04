@@ -25,7 +25,7 @@ module.exports = async (deployer, network, [defaultAccount]) => {
   } else {
     // For kovan networks, use the 0 address to allow the ChainlinkRegistry
     // contract automatically retrieve the correct address for you
-    // did:dns:example.com,0x4A39877E57b7a6d647fa582C6D7B3ccBcfdD30ac,https://baidu.com,example.com domain,QM
+    // did:dns:example20.com,0x4A39877E57b7a6d647fa582C6D7B3ccBcfdD30ac,https://baidu.com,example.com domain,QmTaq2X243Wn3vAydoEjPHeFccLBYGYR9LEuYcnN7CQDKv
     // 0x0000000000000000000000000000000000000000, 'did:dns:example.com', 0x4A39877E57b7a6d647fa582C6D7B3ccBcfdD30ac, 'https://baidu.com', 'example.com domain'
     deployer.deploy(AssetDemo, '0x0000000000000000000000000000000000000000', 'did:dns:example.com', defaultAccount, 'https://baidu.com', 'example.com domain')
   }
