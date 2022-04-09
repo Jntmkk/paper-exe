@@ -9,6 +9,7 @@
   ```txt
   picnic device flash punch fog catch regular apart apart leisure sing humble
   ```
+s私钥为`f2fb96c2a34af441847fa097a208e804d8bc07a7996dde4f193288c4b02441cf`
 
 - 测试流程需要用到以太币和 ChainLink 代币，可以才[水龙头](https://faucets.chain.link/kovan)获取，每次获得0.1ETH 和 10Link。在 MeatMask 中添加新的代币种类，地址为`0xa36085F69e2889c224210F603D836748e7dC0088`，这是预言机服务商在测试网络发行chainlink link 代币。
 
@@ -35,11 +36,6 @@
 点击购买按钮，将与`MetaMask`交互，请求对交易签名，此处发生的动作实际上是触发资产智能合约的`buy`动作，**此动作需要通过预言机检验资产文件是否合法，所以需要支付一定的 LINK 代币，用户需要进行的操作是：复制资产的地址，在`MetaMask`中发送 1 LINK代币到复制的资产地址中**，然后才能进行购买操作，否则交易失败。
 
 完成交易将触发`OwnerTransformEvent`事件，`SubGrpah`会根据事件提供的信息完成资产所有者变更。交易记录可以通过[区块链浏览器](https://kovan.etherscan.io/)查看，输入对于的合约地址就可以查看该合约执行的方法和触发的事件。
-
-
-
-
-
 
 ## chainlink-docker-compose
 ```bash
