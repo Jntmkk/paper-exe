@@ -36,8 +36,10 @@ public class AssetServiceImpl implements AssetService {
     ConcurrentHashMap<String, DomainAsset> map = new ConcurrentHashMap<>();
 
     {
-        map.put("did:dns:example.com", new DomainAsset("did:dns:example.com", "domain example.com", "https://dam.whh.pw//api/asset/valid?id=example.com", null, null));
-        map.put("did:dns:example2.com", new DomainAsset("did:dns:example2.com", "domain example2.com", "https://dam.whh.pw//api/asset/valid?id=example2.com", null, null));
+        map.put("did:dns:example.com", new DomainAsset("did:dns:example.com", "domain example.com", "https://api.whh.buzz/api/asset/valid?id=example.com", null, null));
+        map.put("did:dns:example2.com", new DomainAsset("did:dns:example2.com", "domain example2.com", "https://api.whh.pw/api/asset/valid?id=example2.com", null, null));
+        map.put("did:dns:example3.com", new DomainAsset("did:dns:example3.com", "domain example3.com", "https://api.whh.pw/api/asset/valid?id=example3.com", null, null));
+        map.put("did:dns:example4.com", new DomainAsset("did:dns:example4.com", "domain example4.com", "https://api.whh.pw/api/asset/valid?id=example4.com", null, null));
     }
 
     @Override

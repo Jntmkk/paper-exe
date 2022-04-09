@@ -43,6 +43,7 @@ services:
   ipfs:
     # image: yrzr/go-ipfs-arm64v8:latest
     # image: yeasy/ipfs
+    container_name: ipfs
     image: ipfs/go-ipfs:latest
     volumes:
       - ./ipfs/data:/data/ipfs
@@ -56,6 +57,7 @@ services:
         ipv4_address: 172.16.0.2
   issuer:
     build: ./issuer
+    container_name: issuer
     ports:
       - 9999:9999
     networks:
