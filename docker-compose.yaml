@@ -58,6 +58,7 @@ services:
   issuer:
     build: ./issuer
     container_name: issuer
+  
     ports:
       - 9999:9999
     networks:

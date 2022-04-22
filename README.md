@@ -1,7 +1,7 @@
 # 使用文档
 
 **本测试环境在以太坊 `Kovan`测试网络进行，不是以太坊的主网络，该测试网络下可以[免费获取](https://faucets.chain.link/kovan)以太币。**
-
+**IPFS服务运行需要较大内存支持，目前部署的服务器只有 1G 内存，增加了 1G 的 swap，长时间运行还是会停止**
 ## 前置条件
 
 - `MetaMask`是钱包管理的插件负责对交易进行签名，在 [Google](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?utm_source=chrome-ntp-icon) 和 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/) 浏览器都有相应的插件版本。安装完成后会进行导入账号的初始化操作，您可以为了安全创建新的账户进行测试。完成之后需要在插件设置页面显示测试网络以方便后续测试。同时本文档提供一个钱包方便测试，可以进行导入钱包，助记符如下：
