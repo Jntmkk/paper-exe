@@ -47,3 +47,5 @@ docker-compose -H "ssh://root@whh.buzz" up -d --build
 # 编译 、打包、部署 subgraph
 graph codegen && graph build && graph deploy --product hosted-service Jntmkk/Dam3
 ```
+
+**[部署过程](./Deploy.md)**
