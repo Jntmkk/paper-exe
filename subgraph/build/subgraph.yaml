@@ -7,7 +7,7 @@ dataSources:
     network: kovan
     source:
       abi: AssetDemo
-      startBlock: 30822785
+      startBlock: 31230678
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5

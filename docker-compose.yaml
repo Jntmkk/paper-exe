@@ -45,6 +45,7 @@ services:
     # image: yeasy/ipfs
     container_name: ipfs
     image: ipfs/go-ipfs:latest
+    restart: always
     volumes:
       - ./ipfs/data:/data/ipfs
       - ./ipfs/export:/export
@@ -52,13 +53,20 @@ services:
       - 4001:4001
       - 8080:8080
       - 5001:5001
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 0s
     networks:
       proxy:
         ipv4_address: 172.16.0.2
   issuer:
     build: ./issuer
     container_name: issuer
-  
+    depends_on:
+      - ipfs
     ports:
       - 9999:9999
     networks:
