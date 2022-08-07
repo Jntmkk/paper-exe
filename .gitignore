@@ -1,6 +1,6 @@
 .vscode
 chainlink/
-
+.DS_Store
 blockchain/node_modules
 db-data
 ipfs
